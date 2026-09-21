@@ -39,7 +39,7 @@ int main()
           s.ClrBit(k);
   // оставшиеся в s элементы - простые числа
   std::cout << std :: endl << "Печать множества некратных чисел" << std :: endl << s << std ::endl;
-  std :: cout << std :: endl << "Печать простых чисел" << sdt ::endl;
+  std :: cout << std :: endl << "Печать простых чисел" << std ::endl;
   count = 0;
   k = 1;
   for (m = 2; m <= n; m++)
