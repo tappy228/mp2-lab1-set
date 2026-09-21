@@ -13,6 +13,9 @@
 #ifndef USE_SET // Использовать класс TBitField
 
 #include "tbitfield.h"
+using std::cout;
+using std::endl;
+using std::cin;
 
 int main()
 {
@@ -43,7 +46,7 @@ int main()
     if (s.GetBit(m))
     {
       count++;
-      std :: cout << std :: setw(3) << m << " ";
+      cout << std::setw(3) << m << " ";
       if (k++ % 10 == 0)
         std :: cout << std ::endl;
     }
@@ -53,7 +56,9 @@ int main()
 #else
 
 #include "tset.h"
-
+using std::cout;
+using std::endl;
+using std::cin;
 int main()
 {
   int n, m, k, count;
@@ -83,7 +88,7 @@ int main()
     if (s.IsMember(m))
     {
       count++;
-      cout << setw(3) << m << " ";
+      cout << std::setw(3) << m << " ";
       if (k++ % 10 == 0)
         cout << endl;
     }
