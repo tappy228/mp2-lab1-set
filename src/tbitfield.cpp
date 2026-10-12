@@ -5,8 +5,8 @@
 //
 // Битовое поле
 #include <stdexcept>
-#include "tbitfield.h"
 #include "../include/tbitfield.h"
+static const int BITS_IN_ELEM = sizeof(TELEM) * 8;
 
 TBitField::TBitField(int len)
 {
