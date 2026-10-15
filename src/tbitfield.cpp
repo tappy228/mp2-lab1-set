@@ -4,9 +4,10 @@
 //   Переработано для Microsoft Visual Studio 2008 Сысоевым А.В. (19.04.2015)
 //
 // Битовое поле
+#include <climits>
 #include <stdexcept>
 #include "../include/tbitfield.h"
-static const int BITS_IN_ELEM = sizeof(TELEM) * 8;
+static const int BITS_IN_ELEM = sizeof(TELEM) * CHAR_BIT;
 
 TBitField::TBitField(int len)
 {
@@ -14,7 +15,7 @@ TBitField::TBitField(int len)
         throw std:: invalid_argument("negative lenght");
     }
     BitLen = len;
-    MemLen = (BitLen + 31) / 32;
+    MemLen = (BitLen + BITS_IN_ELEM - 1) / BITS_IN_ELEM;
     pMem = new TELEM[MemLen]{};
 }
 
@@ -37,12 +38,12 @@ TBitField::~TBitField()
 
 int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 {
-    return n/ (sizeof(TELEM)*8);
+    return n / BITS_IN_ELEM;
 }
 
 TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
 {
-    return 1u << (n % (sizeof(TELEM)*8));
+    return static_cast<TELEM>(1) << (n % BITS_IN_ELEM);
 }
 
 // доступ к битам битового поля
