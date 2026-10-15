@@ -732,3 +732,19 @@ TEST(TBitFieldExtra, ComplexBitOperations)
             EXPECT_EQ(result.GetBit(i), 0);
     }
 }
+
+
+TEST(TBitFieldExtra, SeventyBitsSetBit33Only)
+{
+    const int bitLen = 70;
+    const int setBit = 33;
+    TBitField bf(bitLen);
+
+    ASSERT_EQ(bf.GetLength(), bitLen);
+    bf.SetBit(setBit);
+
+    for (int i = 0; i < bitLen; ++i)
+    {
+        EXPECT_EQ(bf.GetBit(i), i == setBit ? 1 : 0) << "bit index: " << i;
+    }
+}
